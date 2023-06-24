@@ -6,11 +6,13 @@ function TaskItem({ task }: { task: ITask }) {
   const [completed, setCompleted] = useState(task.completed);
 
   return (
-    <div className="task-card">
-      <div className="task-card-header">{task.title}</div>
+    <div className={`task-card ${completed && "completed"}`}>
+      <div className="task-card-header">
+        {completed ? <s>{task.title}</s> : task.title}
+      </div>
       <div className="task-card-content">
         <div>{task.id}</div>
-        <div className={`task-card-checkbox ${completed ? "completed" : ""}`}>
+        <div className="task-card-checkbox">
           <label className="checkbox-container">
             <input
               type="checkbox"
